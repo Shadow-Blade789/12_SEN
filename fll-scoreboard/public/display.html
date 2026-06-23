@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Leaderboard</h1>
-<ul id="list"></ul>
+  <body>
+    <h1>Display Page</h1>
+    <ul id="list"></ul>
 
-<script src="/socket.io/socket.io.js"></script>
-<script>
-const socket = io();
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    const socket = io();
 
-socket.on("rankings:update", (data) => {
-  const list = document.getElementById("list");
-  list.innerHTML = "";
+    socket.on("rankings:update", (data) => {
+      const list = document.getElementById("list");
+      list.innerHTML = "";
 
-  data.forEach(team => {
-    const li = document.createElement("li");
-    li.innerText = `${team.teamNumber} - ${team.bestScore}`;
-    list.appendChild(li);
-  });
-});
-</script>
-</body>
+      data.forEach(team => {
+        const li = document.createElement("li");
+        li.innerText = `${team.teamNumber} - ${team.bestScore}`;
+        list.appendChild(li);
+      });
+    });
+    </script>
+  </body>
 </html>
